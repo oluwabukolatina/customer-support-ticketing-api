@@ -10,6 +10,12 @@ const Request = new Schema({
     type: String,
     default: 'Pending',
   },
+
+  creator: {
+    type: Schema.Types.ObjectId,
+    // ref: 'User',
+    required: true,
+  },
   createdAt: { type: Date, default: Date.now },
 });
 module.exports = model('Request', Request);

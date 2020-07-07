@@ -30,11 +30,10 @@ router.post('/login', async (req, res) => {
   }
 
   // check if user exists
-  User.findOne({ where: { email } })
+  Customer.findOne({ email })
     .then((user) => {
-      if (!user) return res.status(400).json({ message: 'User doesnt exists!' });
-      //   user.password;
-      //   console.log(hash);
+      console.log(user);
+      if (!user) return res.status(400).json({ message: 'User doesnt exist!' });
       bcrypt.compare(password, user.password, (err, result) => {
         // result == true
         if (err) throw Error;
@@ -43,29 +42,21 @@ router.post('/login', async (req, res) => {
         jwt.sign({
           id: user.id,
         },
-        process.env.JWTSECRET,
+        process.env.APP_JWT_SECRET,
         { expiresIn: 3600000 },
         (error, token) => {
           if (error) throw error;
           return res.status(200).json({
             // message: 'user created',
             data: {
-              id: user.id,
-              //   firstName: user.firstName,
-              //   lastName: user.lastName,
+              id: user._id,
               email: user.email,
-            //   phoneNumber: user.phoneNumber,
             },
             token,
           });
         });
-        // req.user = user;
-        // next();
-        // console.log();
       });
     });
-  //   const checkIfUser = await User.findOne({ where: { email } });
-  //   if (checkIfUser) return res.status(400).send({ message: 'user already exists', status: 'failed' });
 });
 
 router.post('/register', async (req, res) => {
