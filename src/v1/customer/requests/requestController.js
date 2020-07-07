@@ -1,6 +1,7 @@
-const Request = require('../../../models/Request');
+const Request = require('../../../../models/Request');
 
 module.exports = {
+
   async createRequest(req, res) {
     const { name } = req.body;
     const { user } = req;
@@ -19,5 +20,9 @@ module.exports = {
     } catch (e) {
       return res.status(400).send('Something went wrong!');
     }
+  },
+  // users to view status of their previous requests
+  async getAUserRequests(req, res) {
+    const { user } = req;
   },
 };
