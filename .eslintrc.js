@@ -2,8 +2,6 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true,
-    mocha: true,
   },
   extends: [
     'airbnb-base',
@@ -17,10 +15,11 @@ module.exports = {
     sourceType: 'module',
   },
   rules: {
-    'max-len': ['error', {
-      code: 120,
-    }],
-    'no-console': 'error',
+    'max-len': ['error', { code: 120 }],
+    'no-console': 'off',
   },
-
+  env: {
+    node: true,
+    mocha: true,
+  },
 };
