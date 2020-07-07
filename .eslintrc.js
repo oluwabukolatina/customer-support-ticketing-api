@@ -20,6 +20,7 @@ module.exports = {
     'max-len': ['error', {
       code: 120,
     }],
+    'no-console': 'error',
   },
 
 };

@@ -15,7 +15,7 @@ module.exports = {
       // const jsonObj = JSON.parse(jsonStr);
       Request.create(newRequest, (err, response) => {
         if (err) return res.status(400).json({ message: 'Unable to create request' });
-        // console.log(response);
+        console.log(response);
         return res.status(200).json({ message: 'Request created!', request: response });
       });
     } catch (e) {
