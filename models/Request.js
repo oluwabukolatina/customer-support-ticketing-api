@@ -6,6 +6,10 @@ const Request = new Schema({
     type: String,
     required: true,
   },
+  status: {
+    type: String,
+    default: 'Pending',
+  },
   createdAt: { type: Date, default: Date.now },
 });
 module.exports = model('Request', Request);
