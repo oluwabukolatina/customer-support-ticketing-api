@@ -7,7 +7,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const request = require('./src/v1/request/requestRouter');
+const request = require('./src/v1/request/requestRoute');
 const customerAuth = require('./src/v1/customer/auth/auth');
 
 app.get('/', (req, res) => res.send('Hello World!'));
