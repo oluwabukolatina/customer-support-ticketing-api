@@ -1,0 +1,46 @@
+{
+  "name": "fliqpay",
+  "version": "1.0.0",
+  "description": "fliq pay backend test",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon server.js",
+    "lint:js": "eslint . --ext .js",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "lint": "tsc --noEmit && eslint '*/**/*.{js}' --quiet --fix",
+    "test": "mocha __tests__/**/*test.js"
+  },
+  "keywords": [
+    "nodejs",
+    "express",
+    "rest-api",
+    "mongodb"
+  ],
+  "author": "tina",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.22",
+    "morgan": "^1.10.0",
+    "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.21.1",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "precommit": "NODE_ENV=production lint-staged",
+  "lint-staged": {
+    "src/**/*.{js,jsx,tsx}": [
+      "eslint --fix"
+    ]
+  }
+}
