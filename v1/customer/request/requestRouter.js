@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 
-const controller = require('../controllers/request');
+const controller = require('./requestController');
 
 const { createRequest } = controller;
 router.post('/request', createRequest);
