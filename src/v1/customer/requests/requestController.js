@@ -13,7 +13,6 @@ module.exports = {
         name,
         creator: id,
       };
-      console.log('b')
       return Request.create(newRequest, (err, response) => {
         if (err) return res.status(400).json({ message: 'Unable to create request' });
         return res.status(200).json({ message: 'Request created!', request: response });
@@ -24,6 +23,14 @@ module.exports = {
   },
   // users to view status of their previous requests
   async getAUserRequests(req, res) {
-    const { user } = req;
+    const { id } = req.user;
+    try {
+      const requests = await Request.find({ creator: id });
+      if (!requests) return res.status(400).json({ message: 'Unable to get requests', status: false });
+      console.log(requests);
+      return res.status(200).json({ message: 'Fetched requests', status: true, requests });
+    } catch (e) {
+      return res.status(400).json({ message: 'Something went wrong!' });
+    }
   },
 };
