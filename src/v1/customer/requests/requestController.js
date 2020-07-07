@@ -13,6 +13,7 @@ module.exports = {
         name,
         creator: id,
       };
+      console.log('b')
       return Request.create(newRequest, (err, response) => {
         if (err) return res.status(400).json({ message: 'Unable to create request' });
         return res.status(200).json({ message: 'Request created!', request: response });
