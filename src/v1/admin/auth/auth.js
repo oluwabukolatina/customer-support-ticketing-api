@@ -35,6 +35,8 @@ router.post('/register', async (req, res) => {
       .then((savedUser) => {
         jwt.sign({
           id: savedUser._id,
+          role: user.role,
+
         },
         process.env.APP_JWT_SECRET,
         { expiresIn: 3600000 },
@@ -76,6 +78,7 @@ router.post('/login', async (req, res) => {
 
         return jwt.sign({
           id: user.id,
+          role: user.role,
         },
         process.env.APP_JWT_SECRET,
         { expiresIn: 3600000 },

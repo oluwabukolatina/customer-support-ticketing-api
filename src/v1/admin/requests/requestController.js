@@ -16,4 +16,17 @@ module.exports = {
     }
   },
 
+  // - View the status of a single reques
+  async getARequest(req, res) {
+    const { id } = req.params;
+
+    try {
+      const request = await Request.findById(id).populate('creator', ['-password']);
+      if (!request) return res.status(400).json({ message: 'Unable to get requests', status: false });
+      return res.status(200).json({ message: 'Fetched a request', status: true, request });
+    } catch (error) {
+      return res.status(400).json({ message: 'Something went wrong here!' });
+    }
+  },
+
 };

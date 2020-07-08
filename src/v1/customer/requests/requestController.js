@@ -35,29 +35,27 @@ module.exports = {
     try {
       const requests = await Request.find({ creator: id });
       if (!requests) return res.status(400).json({ message: 'Unable to get requests', status: false });
-      console.log(requests);
       return res.status(200).json({
         message: 'Fetched requests',
         status: true,
         requests,
       });
     } catch (e) {
-      // console.log(e);
       return res.status(400).json({ message: 'Something went wrong while getting requests!' });
     }
   },
 
-  // - View the status of a single reques
+  // a customer can only get her own request
   async getARequest(req, res) {
     const { id } = req.params;
-
+    const { user } = req;
     try {
-      const request = await Request.findById(id).populate('creator', ['-password']);
-      if (!request) return res.status(400).json({ message: 'Unable to get requests', status: false });
+      const request = await Request.findOne({ _id: id, creator: user.id });
+      if (!request) return res.status(400).json({ message: 'Unable to get request', status: false });
       return res.status(200).json({ message: 'Fetched a request', status: true, request });
     } catch (error) {
-      console.log(error);
       return res.status(400).json({ message: 'Something went wrong here!' });
     }
   },
+
 };

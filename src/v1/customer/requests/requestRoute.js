@@ -12,6 +12,6 @@ router.post('/', auth, createRequest);
 router.get('/user', auth, getAUserRequests);
 
 // any one can view this resource
-router.get('/:id', getARequest);
+router.get('/:id', auth, getARequest);
 
 module.exports = router;
