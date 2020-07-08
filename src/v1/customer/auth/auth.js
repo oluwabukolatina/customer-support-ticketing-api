@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const express = require('express');
 
 const router = express.Router();
@@ -32,7 +33,6 @@ router.post('/login', async (req, res) => {
   // check if user exists
   Customer.findOne({ email })
     .then((user) => {
-      console.log(user);
       if (!user) return res.status(400).json({ message: 'User doesnt exist!' });
       bcrypt.compare(password, user.password, (err, result) => {
         // result == true
@@ -41,6 +41,8 @@ router.post('/login', async (req, res) => {
 
         jwt.sign({
           id: user.id,
+          email: user.email,
+
         },
         process.env.APP_JWT_SECRET,
         { expiresIn: 3600000 },
@@ -84,6 +86,8 @@ router.post('/register', async (req, res) => {
       .then((savedUser) => {
         jwt.sign({
           id: savedUser._id,
+          email: savedUser.email,
+
         },
         process.env.APP_JWT_SECRET,
         { expiresIn: 3600000 },
@@ -99,10 +103,7 @@ router.post('/register', async (req, res) => {
           });
         });
       })
-      .catch((error) => {
-        console.log(error);
-        return res.status(400).json({ message: 'Something went wrong!' });
-      });
+      .catch(() => res.status(400).json({ message: 'Something went wrong!' }));
   });
 });
 

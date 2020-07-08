@@ -20,18 +20,7 @@ module.exports = class RequestService {
     }
   }
 
-  /**
-   * @description Finds a request
-   * @param { int } id
-   * @returns {object} request or throw weeror
-   */
-  static async getARequest(id) {
-    try {
-      return await Request.findById(id).populate('creator', ['-password']);
-    } catch (e) {
-      return e;
-    }
-  }
+  
 
   /**
    * @description resolve a request

@@ -16,6 +16,8 @@ const Request = new Schema({
     ref: 'Customer',
     required: true,
   },
+
+  comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   createdAt: { type: Date, default: Date.now },
 });
 module.exports = model('Request', Request);

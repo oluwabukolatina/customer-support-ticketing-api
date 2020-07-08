@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const RequestService = require('../../../services/requests/admin/request.service');
+const SingleRequest = require('../../../services/requests/request.service');
 
 /**
  * admin requests controller perform -
@@ -37,7 +38,7 @@ module.exports = class RequestController {
   static async getARequest(req, res) {
     const { id } = req.params;
     try {
-      const request = await RequestService.getARequest(id);
+      const request = await SingleRequest.getARequest(id);
 
       if (!request) return res.status(404).json({ message: 'Request Not Found!', status: false });
       return res.status(200).json({ message: 'Fetched a request', status: true, request });
@@ -71,7 +72,6 @@ module.exports = class RequestController {
 
       });
     } catch (error) {
-      console.log(error);
       return res.status(400).json({ message: 'Something went wrong!', status: false });
     }
   }
