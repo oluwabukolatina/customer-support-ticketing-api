@@ -28,8 +28,12 @@ Do not use any proprietary technologies or tools that are not available for eval
 The system allows customers to be able to place support requests, and support agents to process the request. The system implements the following specifications.
 
 ## For customers
+
+## done
 - Create support requests
 - View the status of the previous - requests.
+
+## pending
 - Comment on a support request.
 
 ## For support agents
