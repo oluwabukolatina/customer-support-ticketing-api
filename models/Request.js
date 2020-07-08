@@ -13,7 +13,7 @@ const Request = new Schema({
 
   creator: {
     type: Schema.Types.ObjectId,
-    // ref: 'Customer',
+    ref: 'Customer',
     required: true,
   },
   createdAt: { type: Date, default: Date.now },
