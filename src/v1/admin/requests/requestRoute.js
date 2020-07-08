@@ -8,8 +8,9 @@ const controller = require('./requestController');
 const auth = require('../../middlewares/auth');
 const admin = require('../../middlewares/admin/admin');
 
-const { getAllRequests, getARequest } = controller;
+const { getAllRequests, getARequest, resolveRequest } = controller;
 router.get('/', auth, getAllRequests);
 router.get('/:id', admin, getARequest);
+router.put('/:id', admin, resolveRequest);
 
 module.exports = router;

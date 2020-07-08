@@ -42,7 +42,12 @@ The system allows customers to be able to place support requests, and support ag
 
 ## Other functional requirements
 
+## done
+
 - Users should be able to authenticate normally with JWT.
+
+## pending
+
 - An admin user should be able to manage other users and any other system objects.
 - Comment feature for a follow-up conversation between a customer and a support agent. Note that a customer can only comment on a ticket if and only if a support agent has commented on the ticket.
 
@@ -64,7 +69,7 @@ Enough coverage of proofing automated tests on the backend.
 - Application organization across files and within each file - please ensure you follow the framework standards where necessary.
 - Code documentation - balancing between self-documenting code and comments
 - Unit and integration testing
-Exception handling anywhere available and expected in the frameworks you are using.
+- Exception handling anywhere available and expected in the frameworks you are using.
 - For any technology used, the correct usage of that technology based on consecrated best practices
 - Design
 - Clarity and completeness of readme and design documents
@@ -129,7 +134,7 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 
 | METHOD | DESCRIPTION                            | ENDPOINTS                                |
 | ------ | -------------------------------------- | ---------------------------------------- |
-| POST    | Register A User                      | `/auth/sign-up`                   |
+| POST    | Register AUser                      | `/auth/sign-up`                   |
 | POST   | Login user                        | `/auth/sign-in`           |
 | POST   | Ask a question                           | `/questions`              |
 | GET   | View questions                           | `/questions`              |
@@ -141,6 +146,7 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 | GET | Search User                 | `/user?q=`      |
 | GET | Get users questions                 | `/user/questions/:id`      |
 | POST | Subscribe to question                | `/subscribe/question/:id`      |
+
 ## Author
 
 - [Tina](https://github.com/oluwabukolatina)
