@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const RequestService = require('../../../services/requests/admin/request.service');
 
 /**
@@ -45,7 +46,35 @@ module.exports = class RequestController {
     }
   }
 
-  // async resolveRequest(req, res) {
-  //   console.log('hello');
-  // }
+  /**
+   * @description get a specific request
+   * @param {object} req
+   * @param {object} res
+  //  * @returns {object} request
+   */
+
+  static async resolveRequest(req, res) {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    try {
+      const resolved = await RequestService.resolveARequest(status, id);
+      if (resolved) {
+        res.status(200).json({
+          message: 'Status Updated',
+          status: true,
+          request: {
+            status: resolved.status,
+            id: resolved._id,
+            name: resolved.name,
+            createdAt: resolved.createdAt,
+          },
+
+        });
+      }
+      return res.status(400).json({ message: 'Unable to update request', status: false });
+    } catch (error) {
+      return res.status(400).json({ message: 'Something went wrong!', status: false });
+    }
+  }
 };

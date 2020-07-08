@@ -32,4 +32,22 @@ module.exports = class RequestService {
       return e;
     }
   }
+
+  /**
+   * @description resolve a request
+   * @param { int } id
+   * @param { string } status
+   * @returns {object} request or throw weeror
+   */
+  static async resolveARequest(status, id) {
+    const data = { status };
+
+    try {
+      return await Request.findOneAndUpdate({ _id: id }, data, {
+        new: true,
+      });
+    } catch (error) {
+      return error;
+    }
+  }
 };

@@ -7,7 +7,7 @@ require('dotenv').config();
 
 mongoose
   .connect(process.env.APP_DB,
-    { useNewUrlParser: true, useUnifiedTopology: true })
+    { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
   .then(() => {
     app.listen(PORT, () => {
       console.log(`listening on ${PORT}`);
