@@ -39,8 +39,8 @@ module.exports = class RequestService {
    * @param { string } status
    * @returns {object} request or throw weeror
    */
-  static async resolveARequest(status, id) {
-    const data = { status };
+  static async closeARequest(id) {
+    const data = { status: 'Closed' };
 
     try {
       return await Request.findOneAndUpdate({ _id: id }, data, {

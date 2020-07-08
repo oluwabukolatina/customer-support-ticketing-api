@@ -7,9 +7,9 @@ const controller = require('../../../controllers/requests/admin/request.controll
 // middleware: only signed in admin can access this route
 const admin = require('../../../middlewares/admin/admin');
 
-const { getAllRequests, getARequest, resolveRequest } = controller;
+const { getAllRequests, getARequest, closeRequest } = controller;
 router.get('/', admin, getAllRequests);
 router.get('/:id', admin, getARequest);
-router.put('/:id', admin, resolveRequest);
+router.put('/:id', admin, closeRequest);
 
 module.exports = router;

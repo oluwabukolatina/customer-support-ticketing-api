@@ -53,27 +53,25 @@ module.exports = class RequestController {
   //  * @returns {object} request
    */
 
-  static async resolveRequest(req, res) {
+  static async closeRequest(req, res) {
     const { id } = req.params;
-    const { status } = req.body;
 
     try {
-      const resolved = await RequestService.resolveARequest(status, id);
-      if (resolved) {
-        res.status(200).json({
-          message: 'Status Updated',
-          status: true,
-          request: {
-            status: resolved.status,
-            id: resolved._id,
-            name: resolved.name,
-            createdAt: resolved.createdAt,
-          },
+      const resolved = await RequestService.closeARequest(id);
+      if (!resolved) return res.status(400).json({ message: 'Unable to update request', status: false });
+      return res.status(200).json({
+        message: 'Status Updated',
+        status: true,
+        request: {
+          status: resolved.status,
+          id: resolved._id,
+          name: resolved.name,
+          createdAt: resolved.createdAt,
+        },
 
-        });
-      }
-      return res.status(400).json({ message: 'Unable to update request', status: false });
+      });
     } catch (error) {
+      console.log(error);
       return res.status(400).json({ message: 'Something went wrong!', status: false });
     }
   }
