@@ -7,10 +7,10 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-const customerRequest = require('./src/v1/customer/requests/requestRoute');
+const customerRequest = require('./src/v1/routes/requests/customers/requestRoute');
 const customerAuth = require('./src/v1/customer/auth/auth');
 const adminAuth = require('./src/v1/admin/auth/auth');
-const adminRequest = require('./src/v1/admin/requests/requestRoute');
+const adminRequest = require('./src/v1/routes/requests/admin/request.route');
 
 app.get('/', (req, res) => res.send('Hello World!'));
 
