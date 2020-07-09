@@ -1,4 +1,5 @@
 /* eslint-disable no-underscore-dangle */
+const moment = require('moment');
 const RequestService = require('../../../services/requests/admin/request.service');
 const SingleRequest = require('../../../services/requests/request.service');
 
@@ -19,7 +20,7 @@ module.exports = class RequestController {
     const { status } = req.body;
     const query = { status };
     try {
-      const requests = await RequestService.fetchAllRequests(query);
+      const requests = await RequestService.fetchRequests(query);
       if (!requests) return res.status(400).json({ message: 'Unable to get requests', status: false });
       return res.status(200).json({
         message: 'Fetched all requests',
@@ -56,11 +57,15 @@ module.exports = class RequestController {
   //  * @returns {object} request
    */
 
-  static async closeRequest(req, res) {
+  static async attendToRequest(req, res) {
     const { id } = req.params;
+    const { status } = req.body;
+    const data = {
+      status,
+    };
 
     try {
-      const resolved = await RequestService.closeARequest(id);
+      const resolved = await RequestService.attendToARequest(id, data);
       if (!resolved) return res.status(400).json({ message: 'Unable to update request', status: false });
       return res.status(200).json({
         message: 'Status Updated',
@@ -74,6 +79,35 @@ module.exports = class RequestController {
 
       });
     } catch (error) {
+      return res.status(400).json({ message: 'Something went wrong!', status: false });
+    }
+  }
+
+  /**
+   * @description get closed request in the last one month
+   * @param {object} req
+   * @param {object} res
+   * @returns {Array} requests
+   */
+
+  static async searchForClosedRequestsInOneMonth(req, res) {
+    const query = {
+      status: 'Closed',
+      createdAt: {
+        $gte: moment().subtract(1, 'months').format('YYYY-MM-DD')
+        ,
+      },
+    };
+    try {
+      const requests = await RequestService.fetchRequests(query);
+      if (!requests) return res.status(400).json({ message: 'Could get requests!', status: false });
+      return res.status(200)
+        .json({
+          requests,
+          status: true,
+          message: 'Fectched closed requests in the last one month',
+        });
+    } catch (e) {
       return res.status(400).json({ message: 'Something went wrong!', status: false });
     }
   }

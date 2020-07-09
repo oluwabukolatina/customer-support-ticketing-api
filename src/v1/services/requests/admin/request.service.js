@@ -9,10 +9,11 @@ const Request = require('../../../../../models/Request');
 
 module.exports = class RequestService {
   /**
-   * @description Retrieve and return all requests
+   * @description Retrieve and return all requests - either with, query; closed tickets within a time frame, status
    * @returns {Array} of requests or throw error
    */
-  static async fetchAllRequests(data) {
+
+  static async fetchRequests(data) {
     const { status } = data;
     if (status) {
       try {
@@ -55,9 +56,7 @@ module.exports = class RequestService {
    * @param { string } status
    * @returns {object} request or throw weeror
    */
-  static async closeARequest(id) {
-    const data = { status: 'Closed' };
-
+  static async attendToARequest(id, data) {
     try {
       return await Request.findOneAndUpdate({ _id: id }, data, {
         new: true,
