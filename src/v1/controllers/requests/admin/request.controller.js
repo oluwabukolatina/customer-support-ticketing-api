@@ -16,8 +16,10 @@ module.exports = class RequestController {
    * @returns {Array}
    */
   static async getAllRequests(req, res) {
+    const { status } = req.body;
+    const query = { status };
     try {
-      const requests = await RequestService.fetchAllRequests();
+      const requests = await RequestService.fetchAllRequests(query);
       if (!requests) return res.status(400).json({ message: 'Unable to get requests', status: false });
       return res.status(200).json({
         message: 'Fetched all requests',

@@ -32,8 +32,6 @@ The system allows customers to be able to place support requests, and support ag
 ## done
 - Create support requests
 - View the status of the previous - requests.
-
-## pending
 - Comment on a support request.
 
 ## For support agents
