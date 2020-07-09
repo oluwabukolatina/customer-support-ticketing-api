@@ -11,9 +11,20 @@ module.exports = class RequestService {
    * @param { int } id
    * @returns {object} request or throw weeror
    */
-  static async getARequest(id) {
+  static async getARequest(query) {
+    // using a find one query cecause this
+    // is used for customer where it is multiple query being passed to search for the id
     try {
-      return await Request.findById(id).populate('creator', ['-password']);
+      return await Request.findById(query)
+        .populate('creator', ['-password'])
+        .populate({
+          path: 'comments',
+          populate: {
+            path: 'commenter',
+            model: 'User',
+            select: 'email role',
+          },
+        });
     } catch (e) {
       return e;
     }

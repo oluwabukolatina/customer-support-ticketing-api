@@ -26,7 +26,16 @@ module.exports = class RequestService {
    */
   static async fetchAllRequests(data) {
     try {
-      return await Model.find(data);
+      return await Model.find(data)
+        .populate('creator', ['-password'])
+        .populate({
+          path: 'comments',
+          populate: {
+            path: 'commenter',
+            model: 'User',
+            select: 'email role',
+          },
+        });
     } catch (error) {
       return error;
     }

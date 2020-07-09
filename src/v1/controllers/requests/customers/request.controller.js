@@ -1,4 +1,5 @@
 const RequestService = require('../../../services/requests/customers/request.service');
+const SingleRequest = require('../../../services/requests/request.service');
 
 /**
  * authenticated customer requests controller perform -
@@ -76,7 +77,7 @@ module.exports = class RequestController {
     const { user } = req;
     const query = { _id: id, creator: user.id };
     try {
-      const request = await RequestService.getOneRequest(query);
+      const request = await SingleRequest.getARequest(query);
       if (!request) return res.status(404).json({ message: 'Request not found', status: false });
       return res.status(200).json({ message: 'Fetched a request', status: true, request });
     } catch (error) {
