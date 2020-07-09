@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 
@@ -10,7 +11,6 @@ module.exports = {
 
   async registerUser(req, res) {
     const { email, password, role } = req.body;
-    console.log(role);
 
     if (!email) return res.status(400).send({ message: 'please enter your email', status: 'failed' });
 
@@ -23,9 +23,8 @@ module.exports = {
     const newUser = new User({
       email,
       password,
-      role: role || 'admin',
+      role,
     });
-    console.log(newUser);
 
     return bcrypt.hash(password, saltRounds, (err, hash) => {
       // Store hash in your DB.
@@ -34,7 +33,6 @@ module.exports = {
       newUser.password = hash;
       newUser.save()
         .then((savedUser) => {
-          console.log(savedUser);
           jwt.sign({
             id: savedUser._id,
             role: savedUser.role,
@@ -46,7 +44,7 @@ module.exports = {
           (errToken, token) => {
             if (errToken) throw errToken;
             return res.status(200).json({
-              message: role === 'admin' ? 'admin created' : 'user created',
+              message: role ? 'admin created' : 'customer created',
               user: {
                 id: savedUser._id,
                 email: savedUser.email,
@@ -55,8 +53,7 @@ module.exports = {
             });
           });
         })
-        .catch((error) => {
-          console.log(error);
+        .catch(() => {
           res.status(400).json({ message: 'Something went wrong!' });
         });
     });
@@ -77,7 +74,6 @@ module.exports = {
     // check if user exists
     User.findOne({ email })
       .then((user) => {
-        console.log(user);
         if (!user) return res.status(400).json({ message: 'User doesnt exist!' });
         return bcrypt.compare(password, user.password, (err, result) => {
           if (err) throw Error;

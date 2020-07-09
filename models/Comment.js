@@ -8,10 +8,11 @@ const Comment = new Schema({
   },
 
   createdAt: { type: Date, default: Date.now },
-  request: {
-    type: Schema.Types.ObjectId,
+  // request: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: 'User',
 
-  },
+  // },
 
   commenter: {
     type: Schema.Types.ObjectId,

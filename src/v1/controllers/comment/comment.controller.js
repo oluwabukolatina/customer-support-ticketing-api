@@ -15,7 +15,6 @@ module.exports = class CommentController {
     * @returns {object} request
    */
   static async commentOnRequest(req, res) {
-    //     console.log(req.user);
     const { params, user } = req;
     const { id } = params;
 
@@ -29,7 +28,7 @@ module.exports = class CommentController {
     try {
       const request = await RequestService.getARequest(id);
       if (request) {
-        const response = await CommentService.makeComment(data);
+        const response = await CommentService.makeComment(data, id);
         if (!response) return res.status(400).json({ message: 'Unable to comment on request', status: false });
         return res.status(201).json({
           message: 'Status Updated',
@@ -37,7 +36,7 @@ module.exports = class CommentController {
 
           request: {
             id: response._id,
-            comment: response.comment,
+            comment,
             createdAt: response.createdAt,
           },
 

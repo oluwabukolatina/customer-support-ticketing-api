@@ -14,13 +14,21 @@ module.exports = class RequestService {
    */
   static async fetchAllRequests() {
     try {
-      return await Request.find().populate('creator', ['-password']);
+      return await Request.find()
+
+        .populate('creator', ['-password'])
+        .populate({
+          path: 'comments',
+          populate: {
+            path: 'commenter',
+            model: 'User',
+            select: 'email role',
+          },
+        });
     } catch (e) {
       return e;
     }
   }
-
-  
 
   /**
    * @description resolve a request
