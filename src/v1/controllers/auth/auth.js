@@ -10,7 +10,9 @@ const saltRounds = 10;
 module.exports = {
 
   async registerUser(req, res) {
-    const { email, password, role } = req.body;
+    const {
+      email, password, role, level,
+    } = req.body;
 
     if (!email) return res.status(400).send({ message: 'please enter your email', status: 'failed' });
 
@@ -24,6 +26,7 @@ module.exports = {
       email,
       password,
       role,
+      level,
     });
 
     return bcrypt.hash(password, saltRounds, (err, hash) => {
@@ -37,7 +40,7 @@ module.exports = {
             id: savedUser._id,
             role: savedUser.role,
             email: savedUser.email,
-
+            level: savedUser.level,
           },
           process.env.APP_JWT_SECRET,
           { expiresIn: 3600000 },
@@ -83,6 +86,7 @@ module.exports = {
             id: user.id,
             role: user.role,
             email: user.email,
+            level: user.level,
           },
           process.env.APP_JWT_SECRET,
           { expiresIn: 3600000 },
@@ -92,6 +96,7 @@ module.exports = {
               data: {
                 id: user._id,
                 email: user.email,
+                level: user.level,
               },
               token,
             });
