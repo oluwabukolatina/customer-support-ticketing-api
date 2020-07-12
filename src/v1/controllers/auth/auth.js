@@ -44,7 +44,7 @@ module.exports = {
           { expiresIn: 3600000 },
           (errToken, token) => {
             if (errToken) throw errToken;
-            return res.status(200).json({
+            return res.status(201).json({
               message: role ? 'admin created' : 'customer created',
               user: {
                 id: savedUser._id,

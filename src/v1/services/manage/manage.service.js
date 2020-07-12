@@ -63,4 +63,19 @@ module.exports = class ManageService {
       return e;
     }
   }
+
+  /**
+   * @description Delete an admin
+   * @param { int } id
+   */
+  static async deleteUser(id) {
+    try {
+      return await User.findByIdAndDelete(id);
+      // .then((deleted) => {
+      //   Comment.deleteMany({ commenter: id });
+      // });
+    } catch (e) {
+      return e;
+    }
+  }
 };

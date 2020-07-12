@@ -19,10 +19,10 @@ module.exports = class RequestService {
     if (status) {
       try {
         return await Request.find(data)
-
-          .populate('creator', ['-password'])
+          .populate({ path: 'creator', select: 'role email createdAt _id' })
           .populate({
             path: 'comments',
+            options: { sort: { createdAt: -1 } },
             populate: {
               path: 'commenter',
               model: 'User',
@@ -39,6 +39,7 @@ module.exports = class RequestService {
           .populate('creator', ['-password'])
           .populate({
             path: 'comments',
+            options: { sort: { createdAt: -1 } },
             populate: {
               path: 'commenter',
               model: 'User',

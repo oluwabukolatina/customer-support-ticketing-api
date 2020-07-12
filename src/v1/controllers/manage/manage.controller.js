@@ -56,7 +56,6 @@ module.exports = class ManageController {
   static async getAllAdmins(req, res) {
     const { email, role } = req.body;
     const data = { role, email };
-    console.log(data);
     try {
       const admins = await ManageService.fetchAdmin(data);
       if (!admins) res.status(400).json({ message: 'Could not get admins', status: false });
@@ -125,14 +124,25 @@ module.exports = class ManageController {
       return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
     }
   }
+
   /**
-   * @description delete reqyest
+   * @description delete an admin
    * @param {object} req
    * @param {object} res
+   * @returns {object} response
    */
-  // static async deleteAdmin(req, res){
-  //   const {id} = req.params;
-  //   console.log(id);
-  //   const
-  // }
+  static async deleteAdmin(req, res) {
+    const { id } = req.params;
+    const data = { _id: id };
+
+    try {
+      const user = await ManageService.getUser(data);
+      if (!user) res.status(404).json({ message: 'Not Found', status: false });
+      const deletedAdmin = await ManageService.deleteUser(id);
+      if (!deletedAdmin) return res.status(400).json({ message: 'Unable to delete admin', status: false });
+      return res.status(200).json({ message: 'Admin Deleted', status: true });
+    } catch (e) {
+      return res.status(400).json({ message: 'Something went wrong while deleting user', status: false });
+    }
+  }
 };
