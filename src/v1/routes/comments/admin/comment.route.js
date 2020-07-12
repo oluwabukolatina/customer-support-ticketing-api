@@ -2,12 +2,12 @@ const express = require('express');
 
 const router = express.Router();
 
-const controller = require('../../controllers/comment/comment.controller');
+const controller = require('../../../controllers/comment/admin/comment.controller');
 
 // middleware: only signed in user(admin/customer) can access this route
-const auth = require('../../middlewares/auth');
+const admin = require('../../../middlewares/admin/admin');
 
 const { commentOnRequest } = controller;
-router.post('/:id', auth, commentOnRequest);
+router.post('/:id', admin, commentOnRequest);
 
 module.exports = router;

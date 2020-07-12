@@ -12,10 +12,12 @@ function admin(req, res, next) {
     const decoded = jwt.verify(token, process.env.APP_JWT_SECRET);
     // TAKE USER FROM THE TOKEN; checl if the role is admin then proceed
     if (decoded.role !== 'admin') {
-      return res.status(401).json({ message: 'Not authorized to view this resource', status: false });
+      return res
+        .status(401)
+        .json({ message: 'Not authorized to view this resource. Only Admin can access this route', status: false });
     }
     req.user = decoded;
-    next();
+    return next();
   } catch (error) {
     return res.status(400).json({ message: 'Token not valid' });
   }
