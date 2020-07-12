@@ -36,7 +36,8 @@ module.exports = class ManageController {
    */
 
   static async getAllCustomers(req, res) {
-    const data = { role: 'customer' };
+    const { email } = req.body;
+    const data = { role: 'customer', email };
     try {
       const customers = await ManageService.fetchUsers(data);
       if (!customers) res.status(400).json({ message: 'Could not get customers', status: false });
@@ -53,9 +54,11 @@ module.exports = class ManageController {
    */
 
   static async getAllAdmins(req, res) {
-    const data = { role: 'admin' };
+    const { email, role } = req.body;
+    const data = { role, email };
+    console.log(data);
     try {
-      const admins = await ManageService.fetchUsers(data);
+      const admins = await ManageService.fetchAdmin(data);
       if (!admins) res.status(400).json({ message: 'Could not get admins', status: false });
       return res.status(200).json({ message: 'Fetched admins', status: true, data: admins });
     } catch (e) {

@@ -11,8 +11,29 @@ module.exports = class ManageService {
    * @returns {Array} of users or throw error
    */
   static async fetchUsers(data) {
+    const { email, role } = data;
     try {
-      return await User.find(data, '-password');
+      if (email) {
+        return await User.find(data, '-password');
+      }
+      return await User.find({ role }, '-password');
+    } catch (e) {
+      return e;
+    }
+  }
+
+  /**
+   * @description Retrieve and return all aadmin
+   * - either with, query; email
+   * @returns {Array} of users or throw error
+   */
+  static async fetchAdmin(data) {
+    const { email, role } = data;
+    try {
+      if (email) {
+        return await User.find({ email }, '-password -requests');
+      }
+      return await User.find({ role }, '-password -requests');
     } catch (e) {
       return e;
     }
