@@ -9,15 +9,15 @@ app.use(express.urlencoded({ extended: false }));
 const customerRequest = require('./src/v1/routes/requests/customers/request.route');
 const adminRequest = require('./src/v1/routes/requests/admin/request.route');
 const authRoute = require('./src/v1/routes/auth/auth');
-const customerComment = require('./src/v1/routes/comments/customer/comment.route');
-const adminComment = require('./src/v1/routes/comments/admin/comment.route');
-
+const customerCommentRoutes = require('./src/v1/routes/comments/customer/comment.route');
+const adminCommentRoutes = require('./src/v1/routes/comments/admin/comment.route');
+const ManagementRoutes = require('./src/v1/routes/manage/manage.route');
 app.get('/', (req, res) => res.send('Hello World!'));
 const baseUrl = '/api/v1/fliqpay';
 app.use(`${baseUrl}/customer/request`, customerRequest);
 app.use(`${baseUrl}/auth`, authRoute);
 app.use(`${baseUrl}/admin/request`, adminRequest);
-app.use(`${baseUrl}/admin/comment/request`, adminComment);
-app.use(`${baseUrl}/customer/comment/request`, customerComment);
-
+app.use(`${baseUrl}/admin/comment/request`, adminCommentRoutes);
+app.use(`${baseUrl}/customer/comment/request`, customerCommentRoutes);
+app.use(`${baseUrl}/super-admin`, ManagementRoutes)
 module.exports = app;

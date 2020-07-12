@@ -5,6 +5,7 @@ const Request = require('../../../../../models/Request');
  * fetching all requests,
  * getting a particular request
  *  resolving a existing request
+ *  delet request
  */
 
 module.exports = class RequestService {
@@ -54,7 +55,7 @@ module.exports = class RequestService {
    * @description resolve a request
    * @param { int } id
    * @param { string } status
-   * @returns {object} request or throw weeror
+   * @returns {object} request or throw error
    */
   static async attendToARequest(id, data) {
     try {
@@ -63,6 +64,19 @@ module.exports = class RequestService {
       });
     } catch (error) {
       return error;
+    }
+  }
+
+  /**
+   * @description delete a request
+   * @param { int } id
+   * @returns {object} request or throw error
+   */
+  static async deleteRequest(id) {
+    try {
+      return await Request.deleteOne({ _id: id });
+    } catch (e) {
+      return e;
     }
   }
 };

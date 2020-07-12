@@ -16,7 +16,6 @@ const User = new Schema({
     type: String,
     default: 'customer',
   },
-  level: Number,
   createdAt: { type: Date, default: Date.now },
 });
 module.exports = model('User', User);
