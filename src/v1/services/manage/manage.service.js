@@ -29,4 +29,17 @@ module.exports = class ManageService {
       return e;
     }
   }
+
+  /**
+   * @description Retrieve and return a user
+   * - either with, query; email
+   * @returns {object} of user or throw error
+   */
+  static async getUser(data) {
+    try {
+      return await User.findById(data, '-password').populate('requests');
+    } catch (e) {
+      return e;
+    }
+  }
 };

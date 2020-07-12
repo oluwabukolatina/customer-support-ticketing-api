@@ -17,5 +17,6 @@ const User = new Schema({
     default: 'customer',
   },
   createdAt: { type: Date, default: Date.now },
+  requests: [{ type: Schema.Types.ObjectId, ref: 'Request' }],
 });
 module.exports = model('User', User);

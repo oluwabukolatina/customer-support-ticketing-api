@@ -88,6 +88,40 @@ module.exports = class ManageController {
       return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
     }
   }
+
+  /**
+   * @description retrieve and return single user of all levels
+   * @param {object} req
+   * @param {object} res
+   * @returns {object}
+   */
+
+  static async getOneUser(req, res) {
+    const { id } = req.params;
+    const data = { _id: id };
+    try {
+      const user = await ManageService.getUser(data);
+      if (!user) {
+        return res.status(400)
+          .json({
+            message: 'Could not get user',
+            status: false,
+          });
+      }
+      if (user.role === 'customer') res.status(200).json({ message: 'Fetch customer', status: true, user });
+      return res.status(200).json({
+        message: 'Fetch admin',
+        status: true,
+        user: {
+          role: user.role,
+          id: user._id,
+          email: user.email,
+        },
+      });
+    } catch (e) {
+      return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
+    }
+  }
   /**
    * @description delete reqyest
    * @param {object} req
