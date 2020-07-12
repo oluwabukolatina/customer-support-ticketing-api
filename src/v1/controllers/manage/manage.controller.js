@@ -75,7 +75,15 @@ module.exports = class ManageController {
     try {
       const upgrade = await ManageService.upgradeRole(id, data);
       if (!upgrade) res.status(400).json({ message: 'Could not upgrade user role', status: false });
-      return res.status(200).json({ message: 'Updated role', status: true, data: upgrade });
+      return res.status(200).json({
+        message: `Updated role to ${role}`,
+        status: true,
+        data: {
+          role: upgrade.role,
+          id: upgrade._id,
+          email: upgrade.email,
+        },
+      });
     } catch (e) {
       return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
     }
