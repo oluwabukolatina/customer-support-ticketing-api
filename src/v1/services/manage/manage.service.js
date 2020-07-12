@@ -17,4 +17,18 @@ module.exports = class ManageService {
       return e;
     }
   }
+
+  /**
+   * @description upgrade user role
+   * - user id and data(role it should be upgraded to)
+   */
+  static async upgradeRole(id, data) {
+    console.log(id);
+    console.log(data);
+    try {
+      return await User.findByIdAndUpdate(id, data, { new: true });
+    } catch (e) {
+      return e;
+    }
+  }
 };

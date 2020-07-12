@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const RequestService = require('../../services/requests/admin/request.service');
 const SingleRequest = require('../../services/requests/request.service');
-const ManageService = require('../../services/manage/manage.request');
+const ManageService = require('../../services/manage/manage.service');
 /**
  * super admin requests controller perform -
  * delete requests,
@@ -58,6 +58,24 @@ module.exports = class ManageController {
       const admins = await ManageService.fetchUsers(data);
       if (!admins) res.status(400).json({ message: 'Could not get admins', status: false });
       return res.status(200).json({ message: 'Fetched admins', status: true, data: admins });
+    } catch (e) {
+      return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
+    }
+  }
+
+  /**
+   * @description upgrade an admin to superadmin
+   * @param {object} req
+   * @param {object} res
+   */
+  static async upgradeAdminRole(req, res) {
+    const { role } = req.body;
+    const { id } = req.params;
+    const data = { role };
+    try {
+      const upgrade = await ManageService.upgradeRole(id, data);
+      if (!upgrade) res.status(400).json({ message: 'Could not upgrade user role', status: false });
+      return res.status(200).json({ message: 'Updated role', status: true, data: upgrade });
     } catch (e) {
       return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
     }
