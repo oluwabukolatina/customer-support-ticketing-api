@@ -5,9 +5,10 @@ const controller = require('../../controllers/manage/manage.controller');
 // middleware: only signed in superadmin can access this route
 const superadmin = require('../../middlewares/admin/superadmin');
 
-const { deleteRequest, getAllCustomers } = controller;
+const { deleteRequest, getAllCustomers, getAllAdmins } = controller;
 router.delete('/request/:id', superadmin, deleteRequest);
 router.get('/customers', superadmin, getAllCustomers);
+router.get('/admins', superadmin, getAllAdmins);
 
 // router.delete('/admin/:id', superadmin, deleteAdmin)
 // router.delete('/admins', superadmin, deleteAdmin)

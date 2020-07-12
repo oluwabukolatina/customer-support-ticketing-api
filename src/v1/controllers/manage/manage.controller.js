@@ -5,7 +5,8 @@ const ManageService = require('../../services/manage/manage.request');
 /**
  * super admin requests controller perform -
  * delete requests,
- * delete admin
+ * get all customers
+ * get all admin
  */
 
 module.exports = class ManageController {
@@ -27,12 +28,36 @@ module.exports = class ManageController {
     }
   }
 
+  /**
+   * @description retrieve and return all customeers
+   * @param {object} req
+   * @param {object} res
+   * @returns {Array}
+   */
+
   static async getAllCustomers(req, res) {
     const data = { role: 'customer' };
     try {
       const customers = await ManageService.fetchUsers(data);
       if (!customers) res.status(400).json({ message: 'Could not get customers', status: false });
       return res.status(200).json({ message: 'Fetched customers', status: true, data: customers });
+    } catch (e) {
+      return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
+    }
+  }
+  /**
+   * @description retrieve and return all admins
+   * @param {object} req
+   * @param {object} res
+   * @returns {Array}
+   */
+
+  static async getAllAdmins(req, res) {
+    const data = { role: 'admin' };
+    try {
+      const admins = await ManageService.fetchUsers(data);
+      if (!admins) res.status(400).json({ message: 'Could not get admins', status: false });
+      return res.status(200).json({ message: 'Fetched admins', status: true, data: admins });
     } catch (e) {
       return res.status(400).json({ message: 'Something went wrong while getting users', status: false });
     }
