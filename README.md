@@ -28,25 +28,23 @@ Do not use any proprietary technologies or tools that are not available for eval
 The system allows customers to be able to place support requests, and support agents to process the request. The system implements the following specifications.
 
 ## For customers
-
 ## done
 - Create support requests
 - View the status of the previous - requests.
 - Comment on a support request.
 
 ## For support agents
+## done
 - Find and process support requests.
 - One report on requests data with all tickets closed in the last one month. It should be CSV or PDF exportable
 
 ## Other functional requirements
-
 ## done
-
 - Users should be able to authenticate normally with JWT.
 
 ## pending
-
 - An admin user should be able to manage other users and any other system objects.
+## done
 - Comment feature for a follow-up conversation between a customer and a support agent. Note that a customer can only comment on a ticket if and only if a support agent has commented on the ticket.
 
 Assume any functional details required to achieve the above based on logic and your experience.
