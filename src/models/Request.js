@@ -16,7 +16,6 @@ const Request = new Schema({
     ref: 'User',
     required: true,
   },
-
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
   createdAt: { type: Date, default: Date.now },
 });

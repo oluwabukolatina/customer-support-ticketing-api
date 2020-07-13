@@ -144,7 +144,7 @@ Starts the app in production by first building the project with npm run build, a
 | POST    | Answer a question | `/answers/question/:id`            |
 | GET    | Search Question        | `/questions/search?q=`                |
 | GET   | Search Answer                      | `/answers?q=`             |
-| GET | Search User                 | `/user?q=`      |
+| GET | Search UserModel                 | `/user?q=`      |
 | GET | Get users questions                 | `/user/questions/:id`      |
 | POST | Subscribe to question                | `/subscribe/question/:id`      |
 

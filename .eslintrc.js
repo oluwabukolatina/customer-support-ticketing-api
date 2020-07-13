@@ -16,6 +16,7 @@ module.exports = {
   rules: {
     'max-len': ['error', { code: 120 }],
     // 'no-console': 2,
+    '@typescript-eslint/explicit-module-boundary-types': 'off',
   },
   env: {
     node: true,
