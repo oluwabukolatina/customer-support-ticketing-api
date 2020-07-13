@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
-const Comment = require('../../../../models/Comment');
-const Request = require('../../../../models/Request');
+const Comment = require('../../../models/Comment');
+const Request = require('../../../models/Request');
 
 /**
  * performs all action related to comment for both user levels:

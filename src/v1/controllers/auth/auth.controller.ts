@@ -1,15 +1,22 @@
 /* eslint-disable no-underscore-dangle */
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
-const User = require('../../../../models/User');
-require('dotenv').config();
+import dotenv from 'dotenv';
+import User from '../../../models/User';
+
+dotenv.config();
 
 const saltRounds = 10;
 
-module.exports = {
+interface AuthParams {
+  req: any;
+  res: any;
+}
 
-  async registerUser(req, res) {
+// module.exports = {
+class AuthController {
+  static async registerUser({ req, res }: AuthParams) {
     const {
       email, password, role,
     } = req.body;
@@ -58,9 +65,9 @@ module.exports = {
           res.status(400).json({ message: 'Something went wrong!' });
         });
     });
-  },
+  }
 
-  async loginUser(req, res) {
+  static async loginUser({ req, res }: AuthParams) {
     const {
 
       email,
@@ -99,6 +106,6 @@ module.exports = {
           });
         });
       });
-  },
-
-};
+  }
+}
+export default AuthController;

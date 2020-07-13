@@ -111,6 +111,11 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 
 ## Installations
 
+## npm run build
+Builds the app at build, cleaning the folder first.
+
+## npm run start
+Starts the app in production by first building the project with npm run build, and then executing the compiled JavaScript at build/index.js
 #### Setup
 - Installing the project dependencies
   > Run the command below
@@ -120,7 +125,7 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 - Start your node server
   > run the command below
   ```shell
-  $ npm start
+  $ npm run start:dev
   ```
 - Use `http://localhost:4190/api/v1/softcom` as base url for endpoints
 - Live url `https://evening-hamlet-36844.herokuapp.com/api/v1/softcom`

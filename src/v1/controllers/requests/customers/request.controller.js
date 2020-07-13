@@ -1,5 +1,5 @@
 const RequestService = require('../../../services/requests/customers/request.service');
-const SingleRequest = require('../../../services/requests/request.service');
+const SingleRequest = require('../../../services/requests/shared/request.service');
 
 /**
  * authenticated customer requests controller perform -

@@ -1,4 +1,4 @@
-const User = require('../../../../models/User');
+const User = require('../../../models/User');
 /**
  * performs all action related to managing:
  * fetching all customers,

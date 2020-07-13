@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const CommentService = require('../../../services/comments/comment.service');
-const RequestService = require('../../../services/requests/request.service');
+const RequestService = require('../../../services/requests/shared/request.service');
 
 /**
  * comments controller perform -

@@ -1,5 +1,5 @@
 /* eslint-disable import/prefer-default-export */
-const Request = require('../../../../../models/Request');
+const Request = require('../../../../models/Request');
 /**
  * performs all action related to request:
  * fetching all requests,

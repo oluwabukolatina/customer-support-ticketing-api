@@ -1,16 +1,18 @@
 import express from 'express';
+import customerRequest from './v1/routes/requests/customers/request.route';
+import adminRequest from './v1/routes/requests/admin/request.route';
+import authRoute from './v1/routes/auth/auth.routes'
+import customerCommentRoutes from './v1/routes/comments/customer/comment.route';
+import adminCommentRoutes from './v1/routes/comments/admin/comment.route';
+import ManagementRoutes from './v1/routes/manage/manage.route';
+
 const app = express();
 const logger = require('morgan');
 
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-const customerRequest = require('./src/v1/routes/requests/customers/request.route');
-const adminRequest = require('./src/v1/routes/requests/admin/request.route');
-const authRoute = require('./src/v1/routes/auth/auth');
-const customerCommentRoutes = require('./src/v1/routes/comments/customer/comment.route');
-const adminCommentRoutes = require('./src/v1/routes/comments/admin/comment.route');
-const ManagementRoutes = require('./src/v1/routes/manage/manage.route');
+
 app.get('/', (req, res) => res.send('Hello World!'));
 const baseUrl = '/api/v1/fliqpay';
 app.use(`${baseUrl}/customer/request`, customerRequest);

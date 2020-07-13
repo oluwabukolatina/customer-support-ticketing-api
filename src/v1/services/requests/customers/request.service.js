@@ -1,4 +1,4 @@
-const Model = require('../../../../../models/Request');
+const Model = require('../../../../models/Request');
 /**
  * request services performs all action related to a signed in customer requests
  *  - fetching all requests,

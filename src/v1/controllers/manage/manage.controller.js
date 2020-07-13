@@ -1,6 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 const RequestService = require('../../services/requests/admin/request.service');
-const SingleRequest = require('../../services/requests/request.service');
+const SingleRequest = require('../../services/requests/shared/request.service');
 const ManageService = require('../../services/manage/manage.service');
 /**
  * super admin requests controller perform -

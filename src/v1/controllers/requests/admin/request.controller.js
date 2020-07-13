@@ -1,7 +1,7 @@
 /* eslint-disable no-underscore-dangle */
 const moment = require('moment');
 const RequestService = require('../../../services/requests/admin/request.service');
-const SingleRequest = require('../../../services/requests/request.service');
+const SingleRequest = require('../../../services/requests/shared/request.service');
 
 /**
  * admin requests controller perform -
