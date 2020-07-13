@@ -36,7 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var RequestService = require('../../../services/requests/customers/request.service');
-var SingleRequest = require('../../../services/requests/request.service');
+var SingleRequest = require('../../../services/requests/shared/request.service');
 /**
  * authenticated customer requests controller perform -
  * fetching signed in user requests,

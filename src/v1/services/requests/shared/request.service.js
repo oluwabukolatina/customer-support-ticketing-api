@@ -1,11 +1,10 @@
-/* eslint-disable import/prefer-default-export */
-const Request = require('../../../../models/Request');
+import Request from '../../../../models/Request';
 /**
  * performs all action related to request for both user levels:
  * getting a particular request
  */
 
-module.exports = class RequestService {
+class RequestService {
   /**
    * @description Finds a request
    * @param { int } id
@@ -29,4 +28,5 @@ module.exports = class RequestService {
       return e;
     }
   }
-};
+}
+export default RequestService;

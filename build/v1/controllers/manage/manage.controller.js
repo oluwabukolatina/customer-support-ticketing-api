@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 /* eslint-disable no-underscore-dangle */
 var RequestService = require('../../services/requests/admin/request.service');
-var SingleRequest = require('../../services/requests/request.service');
+var SingleRequest = require('../../services/requests/shared/request.service');
 var ManageService = require('../../services/manage/manage.service');
 /**
  * super admin requests controller perform -

@@ -127,9 +127,9 @@ Starts the app in production by first building the project with npm run build, a
   ```shell
   $ npm run start:dev
   ```
-- Use `http://localhost:4190/api/v1/softcom` as base url for endpoints
-- Live url `https://evening-hamlet-36844.herokuapp.com/api/v1/softcom`
-- API Doc `https://documenter.getpostman.com/view/4223397/SzzheyfD?version=latest`
+- Use `http://localhost:4190/api/v1/` as base url for endpoints
+- Live url `j`
+- API Doc `u`
 
 ## API Endpoints
 
@@ -137,16 +137,6 @@ Starts the app in production by first building the project with npm run build, a
 | ------ | -------------------------------------- | ---------------------------------------- |
 | POST    | Register AUser                      | `/auth/sign-up`                   |
 | POST   | Login user                        | `/auth/sign-in`           |
-| POST   | Ask a question                           | `/questions`              |
-| GET   | View questions                           | `/questions`              |
-| PUT    | Upvote a question       | `/questions/upvote/:id`                    |
-| PUT    | Downvote a question        | `/questions/downvote/:id`                |
-| POST    | Answer a question | `/answers/question/:id`            |
-| GET    | Search Question        | `/questions/search?q=`                |
-| GET   | Search Answer                      | `/answers?q=`             |
-| GET | Search UserModel                 | `/user?q=`      |
-| GET | Get users questions                 | `/user/questions/:id`      |
-| POST | Subscribe to question                | `/subscribe/question/:id`      |
 
 ## Author
 

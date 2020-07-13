@@ -42,110 +42,38 @@ Object.defineProperty(exports, "__esModule", { value: true });
 /* eslint-disable import/prefer-default-export */
 var Request_1 = __importDefault(require("../../../../models/Request"));
 /**
- * performs all action related to request:
- * fetching all requests,
+ * performs all action related to request for both user levels:
  * getting a particular request
- *  resolving a existing request
- *  delet request
  */
 module.exports = /** @class */ (function () {
     function RequestService() {
     }
     /**
-     * @description Retrieve and return all requests - either with, query; closed tickets within a time frame, status
-     * @returns {Array} of requests or throw error
+     * @description Finds a request
+     * @param { int } id
+     * @returns {object} request or throw weeror
      */
-    RequestService.fetchRequests = function (data) {
+    RequestService.getARequest = function (query) {
         return __awaiter(this, void 0, void 0, function () {
-            var status, e_1, e_2;
+            var e_1;
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0:
-                        status = data.status;
-                        if (!status) return [3 /*break*/, 5];
-                        _a.label = 1;
-                    case 1:
-                        _a.trys.push([1, 3, , 4]);
-                        return [4 /*yield*/, Request_1.default.find(data)
-                                .populate({ path: 'creator', select: 'role email createdAt _id' })
-                                .populate({
-                                path: 'comments',
-                                options: { sort: { createdAt: -1 } },
-                                populate: {
-                                    path: 'commenter',
-                                    model: 'User',
-                                    select: 'email role',
-                                },
-                            })];
-                    case 2: return [2 /*return*/, _a.sent()];
-                    case 3:
-                        e_1 = _a.sent();
-                        return [2 /*return*/, e_1];
-                    case 4: return [3 /*break*/, 8];
-                    case 5:
-                        _a.trys.push([5, 7, , 8]);
-                        return [4 /*yield*/, Request_1.default.find()
+                        _a.trys.push([0, 2, , 3]);
+                        return [4 /*yield*/, Request_1.default.findById(query)
                                 .populate('creator', ['-password'])
                                 .populate({
                                 path: 'comments',
-                                options: { sort: { createdAt: -1 } },
                                 populate: {
                                     path: 'commenter',
                                     model: 'User',
                                     select: 'email role',
                                 },
                             })];
-                    case 6: return [2 /*return*/, _a.sent()];
-                    case 7:
-                        e_2 = _a.sent();
-                        return [2 /*return*/, e_2];
-                    case 8: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    /**
-     * @description resolve a request
-     * @param { int } id
-     * @param { string } status
-     * @returns {object} request or throw error
-     */
-    RequestService.attendToARequest = function (id, data) {
-        return __awaiter(this, void 0, void 0, function () {
-            var error_1;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Request_1.default.findOneAndUpdate({ _id: id }, data, {
-                                new: true,
-                            })];
                     case 1: return [2 /*return*/, _a.sent()];
                     case 2:
-                        error_1 = _a.sent();
-                        return [2 /*return*/, error_1];
-                    case 3: return [2 /*return*/];
-                }
-            });
-        });
-    };
-    /**
-     * @description delete a request
-     * @param { int } id
-     * @returns {object} request or throw error
-     */
-    RequestService.deleteRequest = function (id) {
-        return __awaiter(this, void 0, void 0, function () {
-            var e_3;
-            return __generator(this, function (_a) {
-                switch (_a.label) {
-                    case 0:
-                        _a.trys.push([0, 2, , 3]);
-                        return [4 /*yield*/, Request_1.default.deleteOne({ _id: id })];
-                    case 1: return [2 /*return*/, _a.sent()];
-                    case 2:
-                        e_3 = _a.sent();
-                        return [2 /*return*/, e_3];
+                        e_1 = _a.sent();
+                        return [2 /*return*/, e_1];
                     case 3: return [2 /*return*/];
                 }
             });

@@ -38,7 +38,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 /* eslint-disable no-underscore-dangle */
 var moment = require('moment');
 var RequestService = require('../../../services/requests/admin/request.service');
-var SingleRequest = require('../../../services/requests/request.service');
+var SingleRequest = require('../../../services/requests/shared/request.service');
 /**
  * admin requests controller perform -
  * fetching requests,

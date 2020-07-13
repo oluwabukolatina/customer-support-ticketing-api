@@ -1,28 +1,26 @@
-const __importDefault = (this && this.__importDefault) || function (mod) {
-  return (mod && mod.__esModule) ? mod : { default: mod };
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-Object.defineProperty(exports, '__esModule', { value: true });
-const express_1 = __importDefault(require('express'));
-
-const app = express_1.default();
-const logger = require('morgan');
-
+Object.defineProperty(exports, "__esModule", { value: true });
+var express_1 = __importDefault(require("express"));
+var request_route_1 = __importDefault(require("./v1/routes/requests/customers/request.route"));
+var request_route_2 = __importDefault(require("./v1/routes/requests/admin/request.route"));
+var auth_routes_1 = __importDefault(require("./v1/routes/auth/auth.routes"));
+var comment_route_1 = __importDefault(require("./v1/routes/comments/customer/comment.route"));
+var comment_route_2 = __importDefault(require("./v1/routes/comments/admin/comment.route"));
+var manage_route_1 = __importDefault(require("./v1/routes/manage/manage.route"));
+var app = express_1.default();
+var logger = require('morgan');
 app.use(logger('dev'));
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: false }));
-const customerRequest = require('./v1/routes/requests/customers/request.route');
-const adminRequest = require('./v1/routes/requests/admin/request.route');
-const authRoute = require('./v1/routes/auth/auth');
-const customerCommentRoutes = require('./v1/routes/comments/customer/comment.route');
-const adminCommentRoutes = require('./v1/routes/comments/admin/comment.route');
-const ManagementRoutes = require('./v1/routes/manage/manage.route');
-
-app.get('/', (req, res) => res.send('Hello World!'));
-const baseUrl = '/api/v1/fliqpay';
-app.use(`${baseUrl}/customer/request`, customerRequest);
-app.use(`${baseUrl}/auth`, authRoute);
-app.use(`${baseUrl}/admin/request`, adminRequest);
-app.use(`${baseUrl}/admin/comment/request`, adminCommentRoutes);
-app.use(`${baseUrl}/customer/comment/request`, customerCommentRoutes);
-app.use(`${baseUrl}/super-admin`, ManagementRoutes);
+app.get('/', function (req, res) { return res.send('Hello World!'); });
+var baseUrl = '/api/v1/fliqpay';
+app.use(baseUrl + "/customer/request", request_route_1.default);
+app.use(baseUrl + "/auth", auth_routes_1.default);
+app.use(baseUrl + "/admin/request", request_route_2.default);
+app.use(baseUrl + "/admin/comment/request", comment_route_2.default);
+app.use(baseUrl + "/customer/comment/request", comment_route_1.default);
+app.use(baseUrl + "/super-admin", manage_route_1.default);
 module.exports = app;

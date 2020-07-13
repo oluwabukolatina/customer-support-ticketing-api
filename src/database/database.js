@@ -1,9 +1,8 @@
-import mongoose from 'mongoose';
-import { config } from 'dotenv';
+const mongoose = require('mongoose');
+require('dotenv').config();
 
 const { connect } = mongoose;
 
-config();
 const dbUrl = process.env.APP_DB;
 
 async function connectToDb() {

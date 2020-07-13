@@ -21,4 +21,5 @@ app.use(`${baseUrl}/admin/request`, adminRequest);
 app.use(`${baseUrl}/admin/comment/request`, adminCommentRoutes);
 app.use(`${baseUrl}/customer/comment/request`, customerCommentRoutes);
 app.use(`${baseUrl}/super-admin`, ManagementRoutes);
-module.exports = app;
+// eslint-disable-next-line import/prefer-default-export
+export { app};

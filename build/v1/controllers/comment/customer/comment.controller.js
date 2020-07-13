@@ -37,7 +37,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
 };
 /* eslint-disable no-underscore-dangle */
 var CommentService = require('../../../services/comments/comment.service');
-var RequestService = require('../../../services/requests/request.service');
+var RequestService = require('../../../services/requests/shared/request.service');
 /**
  * comments controller perform -
  * make comment on a particular request
