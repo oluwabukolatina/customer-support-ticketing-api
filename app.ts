@@ -1,5 +1,4 @@
-const express = require('express');
-
+import express from 'express';
 const app = express();
 const logger = require('morgan');
 
@@ -19,5 +18,5 @@ app.use(`${baseUrl}/auth`, authRoute);
 app.use(`${baseUrl}/admin/request`, adminRequest);
 app.use(`${baseUrl}/admin/comment/request`, adminCommentRoutes);
 app.use(`${baseUrl}/customer/comment/request`, customerCommentRoutes);
-app.use(`${baseUrl}/super-admin`, ManagementRoutes)
+app.use(`${baseUrl}/super-admin`, ManagementRoutes);
 module.exports = app;
