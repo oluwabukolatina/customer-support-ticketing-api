@@ -1,5 +1,5 @@
-import { Document, model, Schema } from 'mongoose';
-import { IUser } from './User';
+import {  model, Schema } from 'mongoose';
+import {RequestInterface} from "../interface/request/request.interface";
 
 const Request = new Schema({
   name: {
@@ -18,11 +18,4 @@ const Request = new Schema({
   },
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
 });
-export interface IRequest extends Document {
-  name: string;
-  status: string;
-  creator: IUser;
-  // comments: Array<any>;
-}
-
-export default model<IRequest>('Request', Request);
+export default model<RequestInterface>('Request', Request);

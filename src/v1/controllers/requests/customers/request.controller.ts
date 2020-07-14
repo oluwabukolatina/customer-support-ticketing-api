@@ -1,7 +1,7 @@
 import { Response, Request } from 'express';
-import { IUser } from '../../../../models/User';
+import { UserInterface } from '../../../models/User';
 
-import { IRequest } from '../../../../models/Request';
+import { IRequest } from '../../../models/Request';
 import RequestService from '../../../services/requests/customers/request.service';
 import SingleRequest from '../../../services/requests/shared/request.service';
 
@@ -21,7 +21,7 @@ class RequestController {
    */
   static async createRequest(req: Request, res: Response): Promise<Response> {
     const { name } = req.body;
-    const { user }: IUser = req;
+    const { user }: UserInterface = req;
     const { id } = user;
     if (!name) return res.status(400).json({ status: false, message: 'Name of request required' });
 

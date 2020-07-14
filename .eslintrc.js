@@ -3,7 +3,7 @@ module.exports = {
     'airbnb-base',
     'eslint:recommended',
     'plugin:@typescript-eslint/eslint-recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
   ],
   globals: {
     Atomics: 'readonly',
@@ -17,7 +17,9 @@ module.exports = {
     'max-len': ['error', { code: 120 }],
     // 'no-console': 2,
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    "import/extensions": "off"
+    'import/extensions': 'off',
+    'import/no-unresolved': 'off',
+
   },
   env: {
     node: true,

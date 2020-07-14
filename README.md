@@ -127,7 +127,7 @@ Starts the app in production by first building the project with npm run build, a
   ```shell
   $ npm run start:dev
   ```
-- Use `http://localhost:4190/api/v1/` as base url for endpoints
+- Use `http://localhost:4200/api/v1/fliqpay` as base url for endpoints
 - Live url `j`
 - API Doc `u`
 
@@ -135,8 +135,8 @@ Starts the app in production by first building the project with npm run build, a
 
 | METHOD | DESCRIPTION                            | ENDPOINTS                                |
 | ------ | -------------------------------------- | ---------------------------------------- |
-| POST    | Register AUser                      | `/auth/sign-up`                   |
-| POST   | Login user                        | `/auth/sign-in`           |
+| POST    | Register A User                      | `/auth/register`                   |
+| POST   | Login a user                        | `/auth/login`           |
 
 ## Author
 
