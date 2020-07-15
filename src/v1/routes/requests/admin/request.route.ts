@@ -8,11 +8,13 @@ const router = express.Router();
 
 const {
   getAllRequests,
-  // getARequest, attendToRequest, searchForClosedRequestsInOneMonth,
+  getARequest, attendToRequest,
+  searchForClosedRequestsInOneMonth,
+
 } = controller;
 router.get('/', admin, getAllRequests);
-// router.get('/searchForClosed', admin, searchForClosedRequestsInOneMonth);
-// router.get('/:id', admin, getARequest);
-// router.put('/:id', admin, attendToRequest);
+router.get('/:id', admin, getARequest);
+router.put('/:id', admin, attendToRequest);
+router.get('/searchForClosed', admin, searchForClosedRequestsInOneMonth);
 
 export default router;

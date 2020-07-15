@@ -139,6 +139,14 @@ Starts the app in production by first building the project with npm run build, a
 | POST   | Login a user                        | `/auth/login`           |
 | POST   | Create a request                        | `/customer/request`           |
 | GET   | Get all a signed in user requests                         | `/customer/request`           |
+| GET   | Get a single signed in user request                      | `/customer/request/:id`           |
+| GET   | get all requests                      | `/admin/request`           |
+| GET   | get a single request                     | `/admin/request/:id`           |
+| PUT   | CLOSE a request                     | `/admin/request/:id`           |
+| POST   | comment on a request                     | `/customer/comment/request/:id`           |
+| POST   | ADMIN COMMENT on a request                     | `/admin/comment/request/:id`           |
+
+
 
 ## Author
 

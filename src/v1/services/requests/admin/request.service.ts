@@ -1,4 +1,4 @@
-import { RequestInterface } from '../../../interfaces/request/request.interface';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 /* eslint-disable import/prefer-default-export */
 import Request from '../../../models/Request';
 /**
@@ -35,9 +35,7 @@ class RequestService {
       }
     } else {
       try {
-        console.log('no status');
         return await Request.find()
-
           .populate('creator', ['-password'])
           .populate({
             path: 'comments',
@@ -59,7 +57,7 @@ class RequestService {
    * @param { int } id
    * @returns {object} request or throw error
    */
-  static async attendToARequest(id:any, data:any) {
+  static async attendToARequest(id: any, data: any) {
     try {
       return await Request.findOneAndUpdate({ _id: id }, data, {
         new: true,

@@ -33,7 +33,6 @@ class RequestService {
         .populate({
           path: 'comments',
           options: { sort: { createdAt: -1 } },
-
           populate: {
             path: 'commenter',
             model: 'User',

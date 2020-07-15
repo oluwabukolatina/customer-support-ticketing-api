@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Response } from 'express';
 import { UserParams } from '../../../interfaces/definition';
-/* eslint-disable no-underscore-dangle */
 import RequestService from '../../../services/requests/shared/request.service';
 import CommentService from '../../../services/comments/shared/comment.service';
 
@@ -32,9 +31,7 @@ class CommentController {
     try {
       const request = await RequestService.getARequest(query);
       if (!request) res.status(404).json({ message: 'Request does not exist sooryy', status: false });
-      const status = { request };
-
-      if (String(status) === 'Resolving') {
+      if (request.status === 'Resolving') {
         const response = await CommentService.makeComment(data, id);
         if (!response) {
           return res.status(400)

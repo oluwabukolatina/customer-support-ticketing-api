@@ -11,7 +11,7 @@ class RequestService {
    * @param { int } id
    * @returns {object} request or throw weeror
    */
-  static async getARequest(query:any) {
+  static async getARequest(query:string) {
     // using a find one query cecause this
     // is used for customer where it is multiple query being passed to search for the id
     try {

@@ -7,6 +7,7 @@ async function connectToDb() {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,
+      useFindAndModify: false,
     });
   } catch (error) {
     return error;
