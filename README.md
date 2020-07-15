@@ -102,6 +102,17 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 
 ## Submission
 
+## User Levels
+-customer
+-admin
+## super admin
+- deleteRequest
+- getAllCustomers
+- getAllAdmins
+- upgradeAdminRole
+- getOneUser
+- deleteAdmin
+
 ## Technologies Used
 - [Node.js](node) A run time environment based off Chrome's v8 Engines for writing Javascript server-side applications.
 - [Express.js](https://expressjs.com) - Web application framework based on Node.js.
@@ -128,8 +139,8 @@ Starts the app in production by first building the project with npm run build, a
   $ npm run start:dev
   ```
 - Use `http://localhost:4200/api/v1/fliqpay` as base url for endpoints
-- Live url `j`
-- API Doc `u`
+- Live url ``
+- API Doc `https://documenter.getpostman.com/view/4223397/T17Q5jGU?version=latest`
 
 ## API Endpoints
 
@@ -145,6 +156,12 @@ Starts the app in production by first building the project with npm run build, a
 | PUT   | CLOSE a request                     | `/admin/request/:id`           |
 | POST   | comment on a request                     | `/customer/comment/request/:id`           |
 | POST   | ADMIN COMMENT on a request                     | `/admin/comment/request/:id`           |
+| DELETE   | delete a request                     | `/super-admin/request/:id`           |
+| get   | get all customers                     | `/super-admin/customer`           |
+| GET   | delete all admins                     | `/super-admin/admins`           |
+| GET   | delete all admins                     | `/super-admin/admins`           |
+| put   | upgrade admin                     | `/super-admin/admin/upgrade/id`           |
+| delete   | delete admin                     | `/super-admin/admin/id`           |
 
 
 

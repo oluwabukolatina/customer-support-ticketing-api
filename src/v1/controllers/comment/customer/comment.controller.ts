@@ -19,6 +19,7 @@ class CommentController {
 
   static async commentOnRequest(req: UserParams, res: Response) {
     const { params, user } = req;
+    console.log(user);
     const { id } = params;
     const { comment } = req.body;
     const data = {
@@ -27,7 +28,6 @@ class CommentController {
       request: id,
     };
     const query: any = { _id: id };
-
     try {
       const request = await RequestService.getARequest(query);
       if (!request) res.status(404).json({ message: 'Request does not exist sooryy', status: false });

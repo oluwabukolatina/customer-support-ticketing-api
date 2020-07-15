@@ -6,7 +6,9 @@ import superadmin from '../../middlewares/admin/superadmin';
 const router = Router();
 
 const {
-  deleteRequest, getAllCustomers, getAllAdmins, upgradeAdminRole, getOneUser, deleteAdmin,
+  deleteRequest, getAllCustomers, getAllAdmins, upgradeAdminRole, getOneUser,
+
+  deleteAdmin,
 } = controller;
 router.delete('/request/:id', superadmin, deleteRequest);
 router.get('/customers', superadmin, getAllCustomers);

@@ -24,7 +24,9 @@ class ManageController {
       const request = await SingleRequest.getARequest(id);
       if (!request) res.status(400).json({ message: 'Request Not Found', status: false });
       const deletedRequest = await RequestService.deleteRequest(id);
-      if (deletedRequest.ok === 1) res.status(200).json({ message: 'Request deleted', status: true });
+      if (deletedRequest.ok === 1) {
+        return res.status(200).json({ message: 'Request deleted', status: true });
+      }
       return res.status(400).json({ message: 'Unable to delete request', status: false });
     } catch (e) {
       return res.status(400).json({ message: 'Something went wrong while deleting request!' });
