@@ -1,5 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Response } from 'express';
-import { RequestInterface } from '../../../interfaces/request/request.interface';
 import { UserParams } from '../../../interfaces/definition';
 /* eslint-disable no-underscore-dangle */
 import RequestService from '../../../services/requests/shared/request.service';
@@ -27,9 +27,10 @@ class CommentController {
       commenter: user.id,
       request: id,
     };
+    const query: any = { _id: id };
 
     try {
-      const request = await RequestService.getARequest(params.id);
+      const request = await RequestService.getARequest(query);
       if (!request) res.status(404).json({ message: 'Request does not exist sooryy', status: false });
       const status = { request };
 

@@ -137,6 +137,8 @@ Starts the app in production by first building the project with npm run build, a
 | ------ | -------------------------------------- | ---------------------------------------- |
 | POST    | Register A User                      | `/auth/register`                   |
 | POST   | Login a user                        | `/auth/login`           |
+| POST   | Create a request                        | `/customer/request`           |
+| GET   | Get all a signed in user requests                         | `/customer/request`           |
 
 ## Author
 

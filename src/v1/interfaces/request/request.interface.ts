@@ -6,5 +6,6 @@ export interface RequestInterface extends Document {
     status: string;
     // creator?: string
     creator: UserInterface['_id'];
+    createdAt: Date
     // comments: Array<any>;
 }

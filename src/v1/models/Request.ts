@@ -16,5 +16,7 @@ const Request = new Schema({
     required: true,
   },
   comments: [{ type: Schema.Types.ObjectId, ref: 'Comment' }],
+  createdAt: { type: Date, default: Date.now },
+
 });
 export default model<RequestInterface>('Request', Request);

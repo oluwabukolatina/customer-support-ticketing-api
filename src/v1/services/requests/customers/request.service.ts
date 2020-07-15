@@ -13,25 +13,27 @@ class RequestService {
    * @param {object} request
    * @returns {object} created request
    */
-  // static async createARequest(data) {
-  //   try {
-  //     return await Model.create(data);
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // }
+  static async createARequest(data:RequestInterface) {
+    try {
+      return await Model.create(data);
+    } catch (error) {
+      return error;
+    }
+  }
 
   /**
    * @description Retrieve and return all requests for a signed in user
    * @returns {Array} of requests or throw error
    */
   static async fetchAllRequests(data:RequestInterface) {
-    console.log(data);
     try {
       return await Model.find(data)
+        .sort('-createdAt')
         .populate('creator', ['-password'])
         .populate({
           path: 'comments',
+          options: { sort: { createdAt: -1 } },
+
           populate: {
             path: 'commenter',
             model: 'User',
@@ -42,13 +44,5 @@ class RequestService {
       return error;
     }
   }
-
-  // static async getOneRequest(data) {
-  //   try {
-  //     return await Model.findOne(data);
-  //   } catch (error) {
-  //     return error;
-  //   }
-  // }
 }
 export default RequestService;

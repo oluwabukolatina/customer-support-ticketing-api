@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import Request from '../../../models/Request';
 /**
  * performs all action related to request for both user levels:
@@ -10,7 +11,7 @@ class RequestService {
    * @param { int } id
    * @returns {object} request or throw weeror
    */
-  static async getARequest(query) {
+  static async getARequest(query:any) {
     // using a find one query cecause this
     // is used for customer where it is multiple query being passed to search for the id
     try {
@@ -22,6 +23,8 @@ class RequestService {
             path: 'commenter',
             model: 'User',
             select: 'email role',
+            options: { sort: { createdAt: -1 } },
+
           },
         });
     } catch (e) {

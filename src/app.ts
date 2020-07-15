@@ -1,4 +1,5 @@
 import express from 'express';
+import morgan from 'morgan';
 import authRoute from './v1/routes/auth/auth.routes';
 import customerRequest from './v1/routes/requests/customers/request.route';
 import adminRequest from './v1/routes/requests/admin/request.route';
@@ -7,13 +8,12 @@ import adminCommentRoutes from './v1/routes/comments/admin/comment.route';
 import ManagementRoutes from './v1/routes/manage/manage.route';
 
 const app = express();
-const logger = require('morgan');
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req, res) => res.send('Hello FliqPay!'));
 const baseUrl = '/api/v1/fliqpay';
 app.use(`${baseUrl}/auth`, authRoute);
 app.use(`${baseUrl}/customer/request`, customerRequest);
