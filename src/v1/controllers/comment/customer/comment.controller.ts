@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { Response } from 'express';
+import { RequestInterface } from '../../../interfaces/request/request.interface';
 import { UserParams } from '../../../interfaces/definition';
 /* eslint-disable no-underscore-dangle */
 import RequestService from '../../../services/requests/shared/request.service';
@@ -28,11 +29,10 @@ class CommentController {
     };
 
     try {
-      const request = await RequestService.getARequest(id);
-      if (!request) {
-        res.status(404).json({ message: 'Request not found', status: false });
-      }
-      const { status } = request;
+      const request = await RequestService.getARequest(params.id);
+      if (!request) res.status(404).json({ message: 'Request does not exist sooryy', status: false });
+      const status = { request };
+
       if (String(status) === 'Resolving') {
         const response = await CommentService.makeComment(data, id);
         if (!response) {

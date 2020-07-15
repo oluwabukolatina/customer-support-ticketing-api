@@ -74,13 +74,13 @@ class RequestService {
    * @param { int } id
    * @returns {object} request or throw error
    */
-  // static async deleteRequest(id) {
-  //   try {
-  //     return await Request.deleteOne({ _id: id });
-  //   } catch (e) {
-  //     return e;
-  //   }
-  // }
+  static async deleteRequest(id: string) {
+    try {
+      return await Request.deleteOne({ _id: id });
+    } catch (e) {
+      return e;
+    }
+  }
 }
 
 export default RequestService;

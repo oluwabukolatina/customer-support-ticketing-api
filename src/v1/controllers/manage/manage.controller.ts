@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { UserInterface } from '../../interfaces/user/user.interface';
 /* eslint-disable no-underscore-dangle */
 import RequestService from '../../services/requests/admin/request.service';
 

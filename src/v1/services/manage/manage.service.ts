@@ -10,7 +10,7 @@ class ManageService {
    * - either with, query; email
    * @returns {Array} of users or throw error
    */
-  static async fetchUsers(data) {
+  static async fetchUsers(data:any) {
     const { email, role } = data;
     try {
       if (email) {
@@ -27,7 +27,7 @@ class ManageService {
    * - either with, query; email
    * @returns {Array} of users or throw error
    */
-  static async fetchAdmin(data) {
+  static async fetchAdmin(data:any) {
     const { email, role } = data;
     try {
       if (email) {
@@ -43,7 +43,7 @@ class ManageService {
    * @description upgrade user role
    * - user id and data(role it should be upgraded to)
    */
-  static async upgradeRole(id, data) {
+  static async upgradeRole(id:string, data:any) {
     try {
       return await User.findByIdAndUpdate(id, data, { new: true });
     } catch (e) {
@@ -56,7 +56,7 @@ class ManageService {
    * - either with, query; email
    * @returns {object} of user or throw error
    */
-  static async getUser(data) {
+  static async getUser(data:any) {
     try {
       return await User.findById(data, '-password').populate('requests');
     } catch (e) {
@@ -68,7 +68,7 @@ class ManageService {
    * @description Delete an admin
    * @param { int } id
    */
-  static async deleteUser(id) {
+  static async deleteUser(id: string) {
     try {
       return await User.findByIdAndDelete(id);
       // .then((deleted) => {

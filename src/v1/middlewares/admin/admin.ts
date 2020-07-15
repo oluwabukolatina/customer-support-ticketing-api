@@ -1,9 +1,10 @@
-import { Request, Response, NextFunction } from 'express';
+import { Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { UserParams } from '../../interfaces/definition';
 import config from '../../../config/config';
 
 // middlware function
-function admin(req: Request, res: Response, next:NextFunction) {
+function admin(req: UserParams, res: Response, next:NextFunction) {
 // to fetch the token
   const token = req.header('Authorization');
   if (!token) {
