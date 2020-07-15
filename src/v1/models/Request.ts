@@ -1,5 +1,5 @@
-import {  model, Schema } from 'mongoose';
-import {RequestInterface} from "../interface/request/request.interface";
+import { model, Schema } from 'mongoose';
+import { RequestInterface } from '../interfaces/request/request.interface';
 
 const Request = new Schema({
   name: {
@@ -10,7 +10,6 @@ const Request = new Schema({
     type: String,
     default: 'Pending',
   },
-
   creator: {
     type: Schema.Types.ObjectId,
     ref: 'User',

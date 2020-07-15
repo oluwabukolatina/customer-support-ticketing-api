@@ -1,6 +1,6 @@
 import express from 'express';
 import authRoute from './v1/routes/auth/auth.routes';
-// import customerRequest from './v1/routes/requests/customers/request.route';
+import customerRequest from './v1/routes/requests/customers/request.route';
 // import adminRequest from './v1/routes/requests/admin/request.route';
 // import customerCommentRoutes from './v1/routes/comments/customer/comment.route';
 // import adminCommentRoutes from './v1/routes/comments/admin/comment.route';
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.get('/', (req, res) => res.send('Hello World!'));
 const baseUrl = '/api/v1/fliqpay';
 app.use(`${baseUrl}/auth`, authRoute);
-// app.use(`${baseUrl}/customer/request`, customerRequest);
+app.use(`${baseUrl}/customer/request`, customerRequest);
 // app.use(`${baseUrl}/admin/request`, adminRequest);
 // app.use(`${baseUrl}/admin/comment/request`, adminCommentRoutes);
 // app.use(`${baseUrl}/customer/comment/request`, customerCommentRoutes);

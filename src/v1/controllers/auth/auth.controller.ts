@@ -2,15 +2,12 @@
 import { Response, Request } from 'express';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import { UserInterface } from '../../interface/user/user.interface';
-
+import { UserInterface } from '../../interfaces/user/user.interface';
 import UserService from '../../services/user/user.service';
 import config from '../../../config/config';
 import User from '../../models/User';
-import AuthService from '../../services/auth/auth.service';
 
 const saltRounds = 10;
-
 /**
  * auth controller
  * create a new user,
@@ -27,7 +24,7 @@ class AuthController {
   static async registerUser(req: Request, res: Response) {
     const {
       email, password, role,
-    } = req.body;
+    }: UserInterface = req.body;
 
     if (!email) return res.status(400).send({ message: 'please enter your email', status: 'failed' });
     if (!password) return res.status(400).send({ message: 'please enter your password', status: 'failed' });
@@ -63,7 +60,7 @@ class AuthController {
               });
             });
           })
-          .catch((e) => res.status(400).json({ message: 'Unable to create user', status: false }));
+          .catch(() => res.status(400).json({ message: 'Unable to create user', status: false }));
       });
     } catch (e) {
       return res.status(400).json({ message: 'Something went wrong', status: false });

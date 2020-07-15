@@ -4,9 +4,14 @@ import controller from '../../../controllers/requests/customers/request.controll
 import auth from '../../../middlewares/auth';
 
 const router = express.Router();
-const { createRequest, getARequest, getAUserRequests } = controller;
-router.post('/', auth, createRequest);
-router.get('/', auth, getAUserRequests);
-router.get('/:id', auth, getARequest);
+const {
+//   createRequest,
+  // getARequest,
+  getAUserRequests,
+} = controller;
+router.get('/', auth, controller.getAUserRequests);
+
+// router.post('/', auth, createRequest);
+// router.get('/:id', auth, getARequest);
 
 export default router;
