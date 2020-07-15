@@ -122,11 +122,6 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
 
 ## Installations
 
-## npm run build
-Builds the app at build, cleaning the folder first.
-
-## npm run start
-Starts the app in production by first building the project with npm run build, and then executing the compiled JavaScript at build/index.js
 #### Setup
 - Installing the project dependencies
   > Run the command below
@@ -139,7 +134,7 @@ Starts the app in production by first building the project with npm run build, a
   $ npm run start:dev
   ```
 - Use `http://localhost:4200/api/v1/fliqpay` as base url for endpoints
-- Live url ``
+- Live url `https://dry-shore-88633.herokuapp.com/`
 - API Doc `https://documenter.getpostman.com/view/4223397/T17Q5jGU?version=latest`
 
 ## API Endpoints

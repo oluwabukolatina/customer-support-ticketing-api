@@ -12,8 +12,9 @@
     "test": "mocha __tests__/**/*test.js",
     "start:dev": "nodemon",
     "build": "rimraf ./build && tsc",
-    "start": "npm run build && node build/",
-    "lint-and-fix": "eslint . --ext .ts --fix"
+    "lint-and-fix": "eslint . --ext .ts --fix",
+    "start": "ts-node src/server.ts",
+    "dev": "nodemon -x ts-node src/config/server.ts"
   },
   "keywords": [
     "nodejs",
@@ -35,6 +36,7 @@
     "json-2-csv": "^3.7.5",
     "jsonwebtoken": "^8.5.1",
     "moment": "^2.27.0",
+    "mongo-seeding": "^3.4.1",
     "mongoose": "^5.9.22",
     "morgan": "^1.10.0",
     "validator": "^13.1.1"
