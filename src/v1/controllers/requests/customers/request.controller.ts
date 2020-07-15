@@ -22,11 +22,7 @@ class RequestController {
   // static async getAUserRequests({ user }: User, res: Response) {
   static async getAUserRequests(req: UserParams, res: Response) {
     const query = { creator: req.user.id };
-    try {
-      const requests = await RequestService.fetchAllRequests(query);
-    } catch (err) {
 
-    }
     //     try {
     //       const requests = await RequestService.fetchAllRequests(query);
     //       if (!requests) return res.status(400).json({ message: 'Unable to get requests', status: false });
