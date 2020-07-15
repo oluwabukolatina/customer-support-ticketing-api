@@ -42,9 +42,7 @@ The system allows customers to be able to place support requests, and support ag
 ## done
 - Users should be able to authenticate normally with JWT.
 
-## pending
 - An admin user should be able to manage other users and any other system objects.
-## done
 - Comment feature for a follow-up conversation between a customer and a support agent. Note that a customer can only comment on a ticket if and only if a support agent has commented on the ticket.
 
 Assume any functional details required to achieve the above based on logic and your experience.
