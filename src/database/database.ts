@@ -1,13 +1,9 @@
-const mongoose = require('mongoose');
-require('dotenv').config();
-
-const { connect } = mongoose;
-
-const dbUrl = process.env.APP_DB;
+import { connect } from 'mongoose';
+import config from '../config/config';
 
 async function connectToDb() {
   try {
-    return await connect(dbUrl, {
+    return await connect(config.APP_DP, {
       useNewUrlParser: true,
       useCreateIndex: true,
       useUnifiedTopology: true,

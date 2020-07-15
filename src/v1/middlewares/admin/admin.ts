@@ -1,17 +1,19 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+import { Request, Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import config from '../../../config/config';
 
 // middlware function
-function admin(req, res, next) {
+function admin(req: Request, res: Response, next:NextFunction) {
 // to fetch the token
   const token = req.header('Authorization');
   if (!token) {
     return res.status(401).send({ message: 'Authorization Denied!', status: false });
   }
   try {
-    const decoded = jwt.verify(token, process.env.APP_JWT_SECRET);
+    const decoded: any = jwt.verify(token, config.APP_JWT_SECRET);
     // TAKE USER FROM THE TOKEN; checl if the role is admin then proceed
-    if (decoded.role !== 'admin' && decoded.role !== 'superadmin') {
+    const { role } = decoded;
+    if (role !== 'admin' && role !== 'superadmin') {
       return res
         .status(401)
         .json({ message: 'Not authorized to view this resource. Only Admin can access this route', status: false });
@@ -23,4 +25,4 @@ function admin(req, res, next) {
   }
 }
 
-module.exports = admin;
+export default admin;

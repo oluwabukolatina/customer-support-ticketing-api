@@ -1,15 +1,17 @@
-const jwt = require('jsonwebtoken');
-require('dotenv').config();
+import { Response, NextFunction } from 'express';
+import jwt from 'jsonwebtoken';
+import { UserParams } from '../../interfaces/definition';
+import config from '../../../config/config';
 
 // middlware function
-function superadmin(req, res, next) {
+function superadmin(req: UserParams, res: Response, next:NextFunction) {
 // to fetch the token
   const token = req.header('Authorization');
   if (!token) {
     return res.status(401).send({ message: 'Authorization Denied!', status: false });
   }
   try {
-    const decoded = jwt.verify(token, process.env.APP_JWT_SECRET);
+    const decoded: any = jwt.verify(token, config.APP_JWT_SECRET);
     // TAKE USER FROM THE TOKEN; checl if the level is superadmin then proceed
     if (decoded.role !== 'superadmin') {
       return res

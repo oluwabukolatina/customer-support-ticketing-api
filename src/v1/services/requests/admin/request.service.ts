@@ -1,3 +1,4 @@
+import { RequestInterface } from '../../../interfaces/request/request.interface';
 /* eslint-disable import/prefer-default-export */
 import Request from '../../../models/Request';
 /**
@@ -14,11 +15,11 @@ class RequestService {
    * @returns {Array} of requests or throw error
    */
 
-  static async fetchRequests(data) {
-    const { status } = data;
+  static async fetchRequests(query:any) {
+    const { status } = query;
     if (status) {
       try {
-        return await Request.find(data)
+        return await Request.find(query)
           .populate({ path: 'creator', select: 'role email createdAt _id' })
           .populate({
             path: 'comments',
@@ -34,6 +35,7 @@ class RequestService {
       }
     } else {
       try {
+        console.log('no status');
         return await Request.find()
 
           .populate('creator', ['-password'])
@@ -55,10 +57,9 @@ class RequestService {
   /**
    * @description resolve a request
    * @param { int } id
-   * @param { string } status
    * @returns {object} request or throw error
    */
-  static async attendToARequest(id, data) {
+  static async attendToARequest(id:any, data:any) {
     try {
       return await Request.findOneAndUpdate({ _id: id }, data, {
         new: true,
@@ -73,13 +74,13 @@ class RequestService {
    * @param { int } id
    * @returns {object} request or throw error
    */
-  static async deleteRequest(id) {
-    try {
-      return await Request.deleteOne({ _id: id });
-    } catch (e) {
-      return e;
-    }
-  }
+  // static async deleteRequest(id) {
+  //   try {
+  //     return await Request.deleteOne({ _id: id });
+  //   } catch (e) {
+  //     return e;
+  //   }
+  // }
 }
 
 export default RequestService;

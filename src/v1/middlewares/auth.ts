@@ -7,7 +7,7 @@ import jwt from 'jsonwebtoken';
 import config from '../../config/config';
 
 export interface UserParams extends Request {
-  user?: any
+  user?: any,
 }
 
 function auth(req: UserParams, res: Response, next: NextFunction) {

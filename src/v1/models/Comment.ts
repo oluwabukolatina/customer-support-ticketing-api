@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const { Schema, model } = mongoose;
 const Comment = new Schema({
@@ -21,4 +21,4 @@ const Comment = new Schema({
 //     enum: ['Admin', 'Customer'],
 //   },
 });
-module.exports = model('Comment', Comment);
+export default model('Comment', Comment);
