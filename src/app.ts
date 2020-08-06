@@ -13,8 +13,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
-app.get('/', (req, res) => res.send('Hello FliqPay!'));
-const baseUrl = '/api/v1/fliqpay';
+app.get('/', (req, res) => res.send('Hello!'));
+const baseUrl = '/api/v1/cts';
 app.use(`${baseUrl}/auth`, authRoute);
 app.use(`${baseUrl}/customer/request`, customerRequest);
 app.use(`${baseUrl}/admin/request`, adminRequest);

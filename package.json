@@ -1,7 +1,7 @@
 {
-  "name": "fliqpay",
+  "name": "cts",
   "version": "1.0.0",
-  "description": "fliq pay backend test",
+  "description": "backend test",
   "main": "src/server.ts",
   "scripts": {
     "tsc": "tsc",

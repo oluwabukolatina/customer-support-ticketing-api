@@ -93,7 +93,7 @@ Create a text file with the following information
 
 ## How to Submit
 
-Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, etc) and engineering@fliqpay.com to the repo for reviewing your submission.
+Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, etc)  to the repo for reviewing your submission.
 
 
 ## Submission
@@ -129,7 +129,7 @@ Create a repo with any of the preferred platforms (Gitlab, Github, Bitbucket, et
   ```shell
   $ npm run start:dev
   ```
-- Use `http://localhost:4200/api/v1/fliqpay` as base url for endpoints
+- Use `http://localhost:4200/api/v1/cts` as base url for endpoints
 - Live url `https://dry-shore-88633.herokuapp.com/`
 - API Doc `https://documenter.getpostman.com/view/4223397/T17Q5jGU?version=latest`
 
