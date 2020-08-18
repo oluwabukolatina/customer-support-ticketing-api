@@ -18,7 +18,6 @@ class CommentController {
    */
   static async commentOnRequest(req: UserParams, res: Response) {
     const { params, user } = req;
-    console.log(user);
     const { id } = params;
     const { comment } = req.body;
     const data = {
